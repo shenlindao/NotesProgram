@@ -1,14 +1,20 @@
 import os
+import json
+file_path = './data/notes.json'
 
-def delete_note(file_name):
+def delete_note(file_path):
     os.system('CLS')
-    with open(file_name, 'r', encoding='utf-8') as file:
-        notes = file.readlines()
-        for n, note in enumerate(notes, start=1):
-            print(n, '-', note, end='')
-    print('')
-    delete_index = int(input("\nВведите номер строки для удаления: ")) - 1
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for note, line in enumerate(notes):
-            if note not in [delete_index]:
-                file.write(line)
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+        for note in data:
+            print('id: ' + str(note['id']))
+            print('head: ' + note['head'])
+            print('body: ' + note['body'])
+            print('date: ' + note['date'])
+            print('')
+        delete_index = int(input("\nВведите id заметки для удаления: "))
+        for index, note in enumerate(data):
+            if note['id'] == delete_index:
+                data.pop(index)
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(json.dumps(data, indent=2))

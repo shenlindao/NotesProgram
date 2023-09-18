@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 file_path = './data/notes.json'
 
-def add_note(file_name):
+def add_note(file_path):
     os.system('CLS')
     head = ''
     head += input('Введите название заметки: ')

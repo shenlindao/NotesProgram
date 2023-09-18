@@ -2,7 +2,7 @@ import os
 import json
 file_path = './data/notes.json'
 
-def show_notes(file_name):
+def show_notes(file_path):
     os.system('CLS')
     with open(file_path, 'r', encoding='utf8') as file:
         data = json.load(file)

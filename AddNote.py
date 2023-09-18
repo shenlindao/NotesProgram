@@ -4,14 +4,15 @@ from datetime import datetime
 
 def add_note(file_name):
     os.system('CLS')
+    file_path = './data/notes.json'
     head = ''
     head += input('Введите название заметки: ')
     body = ''
     body += input('Введите текст заметки: ')
     current_date = datetime.now().strftime("%d.%m.%Y - %H:%M:%S")
     os.system('CLS')
-    with open('./data/notes.json', encoding='utf8') as file:
-        if os.stat('./data/notes.json').st_size != 0:
+    with open(file_path, encoding='utf8') as file:
+        if os.stat(file_path).st_size != 0:
             data = json.load(file)
         else:
             data = []
@@ -24,6 +25,6 @@ def add_note(file_name):
             'date': current_date,
         }
         data.append(new_data)
-        with open('./data/notes.json', 'w', encoding='utf8') as outfile:
+        with open(file_path, 'w', encoding='utf8') as outfile:
             json.dump(data, outfile, ensure_ascii=False, indent=2)
         input('Заметка успешно добавлена! Нажмите Enter для возврата')

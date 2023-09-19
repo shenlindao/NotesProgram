@@ -12,12 +12,12 @@ def add_note(file_path):
     current_date = datetime.now().strftime("%d.%m.%Y - %H:%M:%S")
     os.system('CLS')
     with open(file_path, encoding='utf8') as file:
-        if os.stat(file_path).st_size != 0:
-            data = json.load(file)
+        data = json.load(file)
+        if data:
+            id = data[-1]['id']
+            id += 1
         else:
-            data = []
-        id = len(data)
-        id += 1
+            id = 1
         new_data = {
             'id': id,
             'head': head,

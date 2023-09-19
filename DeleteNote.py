@@ -17,4 +17,4 @@ def delete_note(file_path):
             if note['id'] == delete_index:
                 data.pop(index)
     with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(json.dumps(data, indent=2))
+        file.write(json.dumps(data, ensure_ascii=False, indent=2))

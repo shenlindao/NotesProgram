@@ -1,18 +1,22 @@
 import os
 import json
 from datetime import datetime
+from json.decoder import JSONDecodeError
 file_path = './data/notes.json'
 
 def add_note(file_path):
     os.system('CLS')
-    head = ''
-    head += input('Введите название заметки: ')
-    body = ''
-    body += input('Введите текст заметки: ')
-    current_date = datetime.now().strftime("%d.%m.%Y - %H:%M:%S")
-    os.system('CLS')
     with open(file_path, encoding='utf8') as file:
-        data = json.load(file)
+        try:
+            data = json.load(file)
+        except JSONDecodeError:
+            print('Невалидный JSON файл')
+        print('ДОБАВЛЕНИЕ ЗАМЕТОК\n')
+        head = ''
+        head += input('Введите название заметки: ')
+        body = ''
+        body += input('\nВведите текст заметки: ')
+        current_date = datetime.now().strftime("%d.%m.%Y - %H:%M:%S")
         if data:
             id = data[-1]['id']
             id += 1
@@ -27,4 +31,4 @@ def add_note(file_path):
         data.append(new_data)
         with open(file_path, 'w', encoding='utf8') as outfile:
             json.dump(data, outfile, ensure_ascii=False, indent=2)
-        input('Заметка успешно добавлена! Нажмите Enter для возврата')
+    input('\nЗаметка успешно добавлена! Нажмите Enter для возврата')

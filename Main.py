@@ -15,7 +15,7 @@ def main(file_path):
     while True:
         os.system('CLS')
         drawing()
-        user_choice = int(input('Введите номер нужной операции от 1 до 6: '))
+        user_choice = int(input('\nВведите номер нужной операции от 1 до 6: '))
         if user_choice == 1:
             show_notes(file_path)
         elif user_choice == 2:
@@ -25,7 +25,7 @@ def main(file_path):
         elif user_choice == 4:
             delete_note(file_path)
         elif user_choice == 5:
-            print('Хорошего дня!')
+            print('\nХорошего дня!\n')
             return
 
 main(file_path)

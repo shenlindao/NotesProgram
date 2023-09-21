@@ -1,5 +1,5 @@
 import json
-from actions.show_notes import show
+from actions.show_all_notes import show
 from drawings.input_enter import input_enter
 from json.decoder import JSONDecodeError
 file_path = './data/notes.json'
@@ -14,9 +14,6 @@ def delete(file_path):
             data = json.load(file)
         except JSONDecodeError:
             print('Невалидный JSON файл')
-        # try:
-        #     delete_index = int(input("\nВведите id заметки для удаления: "))
-        #     for index, note in enumerate(data):
         try:
             delete_index = int(input("\nВведите id заметки для удаления: "))
             note = next((note for note in data if note['id'] == delete_index), None)

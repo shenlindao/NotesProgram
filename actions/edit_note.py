@@ -1,8 +1,6 @@
-import sys
 import json
-from actions.show_notes import show
+from actions.show_all_notes import show
 from drawings.input_enter import input_enter
-from drawings.drawing_continue import *
 from datetime import datetime
 from json.decoder import JSONDecodeError
 file_path = './data/notes.json'

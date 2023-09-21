@@ -1,21 +1,16 @@
-from ShowNotes import *
-from AddNote import *
-from EditNote import *
-from DeleteNote import *
+import sys
+from actions.show_notes import *
+from actions.add_note import *
+from actions.edit_note import *
+from actions.delete_note import *
+from drawings.drawing_main import *
 file_path = './data/notes.json'
-
-def drawing():
-    print('1 - Показать все заметки')
-    print('2 - Добавить заметку')
-    print('3 - Редактировать заметку')
-    print('4 - Удалить заметку')
-    print('5 - Выход')
 
 def main(file_path):
     while True:
         os.system('CLS')
-        drawing()
-        user_choice = int(input('\nВведите номер нужной операции от 1 до 6: '))
+        drawing_main()
+        user_choice = int(input('\nВведите номер нужной операции от 1 до 5: '))
         if user_choice == 1:
             show_notes(file_path)
         elif user_choice == 2:
@@ -26,6 +21,6 @@ def main(file_path):
             delete_note(file_path)
         elif user_choice == 5:
             print('\nХорошего дня!\n')
-            return
+            sys.exit()
 
 main(file_path)

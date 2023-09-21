@@ -1,9 +1,10 @@
 import os
 import json
+from drawings.input_enter import *
 from json.decoder import JSONDecodeError
 file_path = './data/notes.json'
 
-def show_notes(file_path):
+def show(file_path):
     os.system('CLS')
     with open(file_path, 'r', encoding='utf8') as file:
         try:
@@ -17,4 +18,7 @@ def show_notes(file_path):
             print('body: ' + note['body'])
             print('date: ' + note['date'])
             print('')
-        input('Нажмите Enter для продолжения')
+
+def show_notes(file_path):
+    show(file_path)
+    input_enter()
